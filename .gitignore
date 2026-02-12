@@ -1,0 +1,58 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build Outputs
+dist
+build
+coverage
+
+# Environment Variables (Security)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+! .env.example
+
+# Infrastructure Secrets
+gcp-sa-key.json
+service-account.json
+*.pem
+*.key
+
+# TurboRepo
+.turbo
+
+# IDEs & OS
+.idea
+.vscode
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+firebase-debug.log
+playwright-report/
+test-results/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Safety Extras
+.firebase
+dist
+.DS_Store
+*.log
+node_modules
+full_lint_report.txt
+full_lint_report_forced.txt
+github-actions-key.json

@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "activa-sl-digital"
+  },
+  "targets": {
+    "activa-sl-digital": {
+      "hosting": {
+        "activa-sl-corporate": [
+          "activa-sl-corporate"
+        ],
+        "activa-sl-digital": [
+          "activa-sl-digital"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

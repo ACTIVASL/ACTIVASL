@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    /* Safe Area Variables for Notch Support */
+    --safe-top: env(safe-area-inset-top);
+    --safe-bottom: env(safe-area-inset-bottom);
+    --safe-left: env(safe-area-inset-left);
+    --safe-right: env(safe-area-inset-right);
+  }
+
+  html,
+  body {
+    height: 100dvh;
+    width: 100%;
+    overflow: hidden;
+    /* Lock the shell - No Pull to Refresh */
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
+    /* Remove 300ms tap delay & Tap Highlight */
+    -webkit-tap-highlight-color: transparent;
+    /* Disable Text Selection for Native Feel */
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Re-enable selection for inputs and special text */
+  input,
+  textarea,
+  [contenteditable="true"],
+  .selectable-text {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  /* CRITICAL: Prevent iOS Zoom on Inputs */
+  @media screen and (max-width: 768px) {
+
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  body {
+    @apply font-body bg-slate-50 text-slate-900 antialiased;
+    padding-top: var(--safe-top);
+    padding-bottom: var(--safe-bottom);
+    padding-left: var(--safe-left);
+    padding-right: var(--safe-right);
+  }
+
+  /* Prevent text selection to feel like Native App */
+  .no-select {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+
+  /* UI KIT: CARDS */
+  .card-clinical {
+    @apply bg-white border border-white/50 shadow-sm rounded-2xl transition-all;
+  }
+
+  .card-hoverable:hover {
+    @apply shadow-md -translate-y-1 border-pink-500/20;
+  }
+
+  /* UI KIT: INPUTS (Titanium Standard) */
+  .input-pro {
+    @apply w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-lg text-slate-800 shadow-sm transition-all;
+    @apply focus:border-pink-500 focus:ring-4 focus:ring-pink-500/10 focus:outline-none;
+    @apply placeholder:text-slate-400;
+  }
+
+  .label-pro {
+    @apply block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2;
+  }
+
+  /* UI KIT: BUTTONS */
+  .btn-primary {
+    @apply bg-gradient-to-br from-pink-600 to-rose-600 text-white shadow-lg shadow-pink-500/30 border-0;
+    @apply hover:shadow-xl hover:shadow-pink-500/40 hover:-translate-y-0.5 transition-all;
+    @apply active:translate-y-0 active:shadow-md;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-xl;
+  }
+
+  .glass-button {
+    @apply bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white transition-all;
+  }
+
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-rose-500;
+  }
+
+  /* Grid Pattern (Titanium) */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400;
+}
+
+/* PRINT STYLES (Critical for Invoices) */
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  body {
+    background: white;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* TITANIUM SPECIFICITY: High Impact, No Hacks */
+  html body .no-print,
+  html body .sidebar,
+  html body .mobile-header,
+  html body header,
+  html body aside {
+    display: none;
+  }
+
+  html body .print-only {
+    display: block;
+  }
+}
+
+/* TITANIUM ULTRA-MOBILE UTILITIES */
+@layer utilities {
+  .mobile-bottom-sheet {
+    @apply fixed left-0 right-0 bottom-0 rounded-t-3xl bg-white shadow-[0_-10px_40px_-15px_rgba(0, 0, 0, 0.2)] transform transition-transform duration-300 ease-out z-50;
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .safe-pb {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 3s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat {
+
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+  }
+
+  /* iOS Human Interface Guidelines: Min 44x44pt target size */
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+/* TITANIUM NATIVE TRANSITIONS (Zero Latency Feel) */
+::view-transition-group(root) {
+  animation-duration: 0.3s;
+}
+
+::view-transition-old(root) {
+  animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}

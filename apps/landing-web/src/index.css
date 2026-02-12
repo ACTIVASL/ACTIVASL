@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    .mask-radial-faded {
+        mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
+        -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #0a0a0a;
+        /* Dark Tech Titanium */
+        color: #f8fafc;
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    #root {
+        background-color: #020617;
+        min-height: 100vh;
+        isolation: isolate;
+    }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    z-index: 9999;
+    border-radius: 2px;
+}
+
+.animate-draw-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawPath 2.5s ease-out forwards;
+}
+
+@keyframes drawPath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Migrated Utilities from App.tsx and Footer.tsx */
+.font-outfit {
+    font-family: 'Outfit', sans-serif;
+}
+
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+.perspective-container {
+    perspective: 2000px;
+}
+
+.tilt-card {
+    transform: rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.5s ease;
+}
+
+.tilt-card:hover {
+    transform: rotateY(0deg) rotateX(0deg);
+}
+
+.mock-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mock-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mock-scroll::-webkit-scrollbar-thumb {
+    background-color: #CBD5E1;
+    border-radius: 20px;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #F8FAFC;
+    /* slate-50 */
+}
+
+body {
+    background-color: #0a0a0a;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(0, 243, 255, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(124, 58, 237, 0.15) 0px, transparent 50%),
+        linear-gradient(to bottom, transparent, rgba(10, 10, 10, 1));
+    background-attachment: fixed;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Glassmorphism 2.0 Utilities */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Grid Pattern */
+.bg-grid-pattern {
+    background-image:
+        linear-gradient(to right, rgba(10, 15, 29, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(10, 15, 29, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+/* Footer Shine Animation */
+@keyframes shine {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.group-hover\:animate-shine {
+    animation: shine 1.5s infinite;
+}
+
+/* Audio Waveform Animation */
+@keyframes wave {
+
+    0%,
+    100% {
+        height: 20%;
+        opacity: 0.5;
+    }
+
+    50% {
+        height: 100%;
+        opacity: 1;
+    }
+}
+
+.animate-wave {
+    animation: wave 1.5s ease-in-out infinite;
+}
+
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* SYMPHONY OF LIGHT: GLOBAL ANIMATIONS */
+@keyframes pulse-slow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+}
+
+@keyframes shift-light {
+    0% {
+        transform: translateX(-50%) skewX(-15deg);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateX(50%) skewX(-15deg);
+        opacity: 0;
+    }
+}
+
+.animate-shift-light {
+    animation: shift-light 10s ease-in-out infinite;
+}
+
+@keyframes ken-burns {
+    0% {
+        transform: scale(1.0) translate(0, 0);
+    }
+
+    100% {
+        transform: scale(1.15) translate(-2%, -2%);
+    }
+}
+
+.animate-ken-burns {
+    animation: ken-burns 25s ease-in-out infinite alternate;
+}
+
+/* NATIVE VIEW TRANSITIONS (Mobile Slide Effect) */
+@layer utilities {
+    ::view-transition-old(root) {
+        animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both fade-out, 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+    }
+
+    ::view-transition-new(root) {
+        animation: 300ms cubic-bezier(0.4, 0, 0.2, 1) both fade-in, 300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateX(30px);
+    }
+}
+
+@keyframes slide-to-left {
+    to {
+        transform: translateX(-30px);
+    }
+}
+
+/* Page Transition Animation Class (Triggered by ViewTransitions.tsx) */
+.page-transition-enter {
+    animation: fade-enter 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes fade-enter {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.99);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* ATOMIC PHYSICS ANIMATIONS */
+@keyframes atomic-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes atomic-spin-reverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.animate-atomic-spin {
+    animation: atomic-spin 10s linear infinite;
+}
+
+.animate-atomic-spin-slow {
+    animation: atomic-spin 15s linear infinite;
+}
+
+.animate-atomic-spin-reverse {
+    animation: atomic-spin-reverse 20s linear infinite;
+}
