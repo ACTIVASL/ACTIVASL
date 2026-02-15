@@ -139,7 +139,8 @@ export const InvoiceGenerator = ({ data, onClose, clinicSettings }: InvoiceGener
               {data.sessions.map((s: Session, i: number) => (
                 <tr key={i}>
                   <td className="py-4 font-medium text-slate-700">
-                    ? `Sesión Grupal: ${s.location || 'Sala Polivalente'} `
+                    {s.type === 'group'
+                      ? `Sesión Grupal: ${s.location || 'Sala Polivalente'} `
                       : 'Consultoría Tecnológica'}
                     {s.notes && (
                       <div className="text-xs text-slate-400 mt-0.5 font-normal truncate max-w-md">
