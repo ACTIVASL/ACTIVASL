@@ -4,7 +4,7 @@ import { MobileBottomNav } from './MobileBottomNav';
 import { useUIStore } from '../stores/useUIStore';
 import { TitaniumBackground } from '../components/ui/TitaniumBackground';
 import logoCircular from '../assets/logo-alpha.png';
-import { Command, Bell } from 'lucide-react';
+import { Bell } from 'lucide-react';
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -23,6 +23,28 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { quickAppointment } = useUIStore();
+
+  // TITANIUM FOCUS MODE: Hide Nav on Mobile Input Focus
+  const [isFocused, setIsFocused] = useState(false);
+
+  React.useEffect(() => {
+    const handleFocus = (e: FocusEvent) => {
+      const target = e.target as HTMLElement;
+      // check if text input
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+        setIsFocused(true);
+      }
+    };
+    const handleBlur = () => setIsFocused(false);
+
+    // Capture phase is better for focus events on window
+    window.addEventListener('focus', handleFocus, true);
+    window.addEventListener('blur', handleBlur, true);
+    return () => {
+      window.removeEventListener('focus', handleFocus, true);
+      window.removeEventListener('blur', handleBlur, true);
+    };
+  }, []);
 
   return (
     <div className="flex min-h-[100dvh] relative overflow-hidden bg-[#050505] font-sans text-slate-200">
@@ -47,6 +69,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
         onOpenMenu={() => setIsMobileMenuOpen(true)}
         onNewAction={() => quickAppointment.open('new')}
         isMenuOpen={isMobileMenuOpen}
+        isFocused={isFocused}
       />
 
       {/* 4. MAIN EXECUTIVE STACK */}
@@ -70,20 +93,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
             </div>
           </div>
 
-          {/* GLOBAL COMMAND & SEARCH */}
-          <div className="flex-1 max-w-xl mx-8 hidden md:block group">
-            <div className="relative">
-              <Command className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-hover:text-blue-400 transition-colors" />
-              <input
-                type="text"
-                placeholder="Search Intelligence, Agents, or Protocols..."
-                className="w-full bg-[#0a0a0a] border border-slate-800 rounded-lg py-1.5 pl-10 pr-4 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-blue-900/50 focus:ring-1 focus:ring-blue-900/50 transition-all font-mono"
-              />
-              <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                <span className="text-[10px] bg-slate-900 text-slate-500 px-1.5 py-0.5 rounded border border-slate-800">⌘K</span>
-              </div>
-            </div>
-          </div>
+          {/* GLOBAL COMMAND & SEARCH REMOVED */}\n          <div className="flex-1"></div>
 
           {/* NOTIFICATIONS & STATUS */}
           <div className="flex items-center gap-4">
@@ -93,7 +103,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
             </button>
             <div className="h-8 w-[1px] bg-slate-800 hidden md:block"></div>
             <div className="flex flex-col items-end hidden md:flex">
-              <span className="text-[10px] font-bold text-slate-300">GEMINI 3.0 PRO</span>
+              <span className="text-[10px] font-bold text-slate-300">SYSTEM V.4.2</span>
               <span className="text-[9px] font-mono text-slate-500">LATENCY: 12ms</span>
             </div>
           </div>

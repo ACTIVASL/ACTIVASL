@@ -6,7 +6,6 @@ import {
   AlertCircle,
   Lock
 } from 'lucide-react';
-import logoCircular from './assets/logo-titanium.png';
 import { TitaniumBackground } from '@monorepo/ui-system';
 
 export interface LoginViewProps {
@@ -64,22 +63,22 @@ export const LoginView = ({ }: LoginViewProps) => {
 
         {/* HEADER */}
         <div className="flex flex-col items-center text-center mb-10">
-          <div className="relative w-20 h-20 mb-6 group cursor-default">
+          <div className="relative w-32 h-32 mb-6 group cursor-default scale-110">
             {/* Glow Behind */}
-            <div className="absolute inset-0 rounded-full bg-brand-primary opacity-30 blur-xl animate-pulse-slow"></div>
+            <div className="absolute inset-0 rounded-full bg-blue-600 opacity-40 blur-xl animate-pulse-slow"></div>
 
             {/* Logo Container - Circular Mask + Border */}
-            <div className="relative w-full h-full rounded-full border-2 border-brand-primary flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.3)] overflow-hidden">
+            <div className="relative w-full h-full rounded-full border-[3px] border-blue-500 shadow-[0_0_25px_rgba(37,99,235,0.6)] flex items-center justify-center overflow-hidden bg-[#020617] ring-1 ring-white/20">
               <img
-                src={logoCircular}
+                src="/activa-logo-new.png"
                 alt="Activa Logo"
-                className="w-full h-full object-cover rounded-full scale-125"
+                className="w-full h-full object-contain p-0"
               />
             </div>
           </div>
 
           <h2 className="text-3xl font-bold text-white tracking-tight font-display mb-1">
-            ACTIVA <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-400">SL</span>
+            ACTIVA <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">SL</span>
           </h2>
           <p className="text-sm font-medium text-slate-400 tracking-[0.3em] uppercase">
             BIENVENIDO

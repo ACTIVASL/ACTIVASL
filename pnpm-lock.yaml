@@ -245,7 +245,7 @@ importers:
         specifier: ^0.5.10
         version: 0.5.17
       '@genkit-ai/googleai':
-        specifier: ^0.5.10
+        specifier: ^0.5.17
         version: 0.5.17(@genkit-ai/ai@0.5.17)(@genkit-ai/core@0.5.17)
       firebase-admin:
         specifier: ^12.0.0
@@ -493,6 +493,9 @@ importers:
       react-to-print:
         specifier: ^3.2.0
         version: 3.2.0(react@18.3.1)
+      sonner:
+        specifier: ^2.0.7
+        version: 2.0.7(react-dom@18.3.1)(react@18.3.1)
       tailwind-merge:
         specifier: ^3.4.0
         version: 3.4.0
@@ -14479,6 +14482,16 @@ packages:
       ip-address: 10.1.0
       smart-buffer: 4.2.0
     dev: true
+
+  /sonner@2.0.7(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-W6ZN4p58k8aDKA4XPcx2hpIQXBRAgyiWVkYhT7CvK6D3iAu7xjvVyhQHg2/iaKJZ1XVJ4r7XuwGL+WGEK37i9w==}
+    peerDependencies:
+      react: 18.3.1
+      react-dom: 18.3.1
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    dev: false
 
   /sort-any@2.0.0:
     resolution: {integrity: sha512-T9JoiDewQEmWcnmPn/s9h/PH9t3d/LSWi0RgVmXSuDYeZXTZOZ1/wrK2PHaptuR1VXe3clLLt0pD6sgVOwjNEA==}

@@ -5,7 +5,7 @@ import { RevealSection } from '../../components/ui/RevealSection';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import crmImage from '../../assets/images/blog_nano_crm.png';
-import sessionImage from '../../assets/images/individual-session-child.png';
+
 
 export const BlogIndex = () => {
     const posts = [

@@ -52,18 +52,17 @@ const Methodology = ({ onOpenModal }: { onOpenModal: (type: string) => void }) =
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-sm font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-slate-400 tracking-[0.2em] uppercase mb-4">
-            Ingeniería de Élite
+          <h2 className="text-sm font-display font-bold text-brand-primary tracking-[0.2em] uppercase mb-4">
+            PROTOCOLO DE DESPLIEGUE A2A
           </h2>
           <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
-            Tres Pilares para el <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
-              Éxito Digital
+            De la "Gestión" a la <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+              Orquestación de Agentes
             </span>
           </h3>
           <p className="text-lg text-slate-400 font-body font-light leading-relaxed">
-            Unificamos la estrategia de negocio, el diseño de producto y la ingeniería de software
-            en un ecosistema diseñado para escalar.
+            No instalamos software. Entrenamos a tu "Ejército Digital" (Gemini + NotebookLM) para que operen tu empresa bajo tu supervisión.
           </p>
         </div>
 

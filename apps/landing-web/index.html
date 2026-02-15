@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -19,6 +18,55 @@
     <meta name="theme-color" content="#0A0F1D" />
     <meta name="version" content="titanium-v5-nuclear-bust-2026-02-03-1205" />
     <!-- NUCLEAR CACHE BUST: 2026-02-03T12:05:00 -->
+
+    <!-- AI AGENT PROTOCOL: JSON-LD IDENTITY -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://activa-sl.digital/#organization",
+          "name": "ACTIVA SL Digital",
+          "url": "https://activa-sl.digital/",
+          "logo": "https://activa-sl.digital/logo-v2.png",
+          "sameAs": [
+            "https://www.linkedin.com/company/activa-sl",
+            "https://twitter.com/activasl"
+          ],
+          "description": "Consultora de Ingeniería de Software de Alto Impacto. Especialistas en Transformación Digital A2A (Agent-to-Agent), CRMs Propietarios y Ecosistemas de IA.",
+          "knowsAbout": ["Artificial Intelligence", "Agent-to-Agent Economy", "React", "Enterprise Software", "Digital Transformation"],
+          "slogan": "Ingeniería para Escalar"
+        },
+        {
+          "@type": "ProfessionalService",
+          "parentOrganization": { "@id": "https://activa-sl.digital/#organization" },
+          "name": "Consultoría de IA & Software",
+          "description": "Desarrollo de Sistemas Operativos Empresariales (Titanium OS), Integración de Agentes Gemini y Auditoría Técnica.",
+          "priceRange": "$$$$",
+          "image": "https://activa-sl.digital/assets/images/crm-dashboard-sme.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "ES",
+            "addressLocality": "Madrid"
+          }
+        },
+        {
+           "@type": "SoftwareApplication",
+           "name": "ACTIVA OS",
+           "operatingSystem": "Web, Android, iOS",
+           "applicationCategory": "BusinessApplication",
+           "offers": {
+             "@type": "Offer",
+             "price": "0",
+             "priceCurrency": "EUR",
+             "description": "Consultar Plan Enterprise"
+           }
+        }
+      ]
+    }
+    </script>
+
 
     <!-- OPEN GRAPH (Social Media Authority) -->
     <meta property="og:type" content="website" />

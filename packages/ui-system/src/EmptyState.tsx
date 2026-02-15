@@ -25,17 +25,17 @@ export const EmptyState = ({
       className={`col-span-full flex flex-col items-center justify-center text-center py-20 px-4 animate-in fade-in zoom-in-95 duration-500 ${className}`}
     >
       <div className="relative mb-6 group cursor-default">
-        <div className="absolute inset-0 bg-gradient-to-tr from-slate-200/50 to-slate-100/50 rounded-full blur-2xl transform scale-150 group-hover:scale-175 transition-transform duration-700"></div>
-        <div className="w-20 h-20 bg-slate-50 rounded-3xl flex items-center justify-center shadow-inner ring-1 ring-slate-100 relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-tr from-slate-800/50 to-slate-900/50 rounded-full blur-2xl transform scale-150 group-hover:scale-175 transition-transform duration-700"></div>
+        <div className="w-20 h-20 bg-slate-900/80 rounded-3xl flex items-center justify-center shadow-inner ring-1 ring-white/10 relative z-10 backdrop-blur-sm">
           <Icon
             size={32}
-            className="text-slate-300 group-hover:text-pink-400 transition-colors duration-500"
+            className="text-slate-500 group-hover:text-[#00B2A9] transition-colors duration-500"
             strokeWidth={1.5}
           />
         </div>
       </div>
 
-      <h3 className="text-lg font-bold text-slate-800 mb-2 max-w-sm">{title}</h3>
+      <h3 className="text-lg font-bold text-slate-200 mb-2 max-w-sm">{title}</h3>
 
       <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed mb-8">{description}</p>
 

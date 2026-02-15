@@ -1,0 +1,136 @@
+
+> landing-web@1.0.0 lint C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web
+> eslint . --ext ts,tsx --max-warnings 0
+
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\App.test.tsx
+  2:18  error  'screen' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\landing\About.tsx
+  3:10  error  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+  3:24  error  'Award' is defined but never used         @typescript-eslint/no-unused-vars
+  3:31  error  'Globe' is defined but never used         @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\landing\Footer.tsx
+   1:10  error  'ArrowRight' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+  42:38  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\landing\Hero.tsx
+  3:8  error  'heroPremiumBg' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\landing\Services.tsx
+  1:10  error  'ArrowRight' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\FilmGrain.tsx
+  1:10  error  'useEffect' is defined but never used            @typescript-eslint/no-unused-vars
+  4:21  error  'setOpacity' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\SpotlightCard.tsx
+  1:10  error  'useRef' is defined but never used    @typescript-eslint/no-unused-vars
+  1:18  error  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\TitaniumBackground.tsx
+  31:9  warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\TitaniumBackground.tsx:31:9
+   29 |
+   30 |         // PARTICLES (Data Packets)
+>  31 |         class Particle {
+      |         ^^^^^^^^^^^^^^^^
+>  32 |             x: number;
+      | ^^^^^^^^^^^^^^^^^^^^^^
+>  33 |             y: number;
+      ÔÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 119 |             }
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 120 |         }
+      | ^^^^^^^^^^ Inline `class` declarations are not supported
+  121 |
+  122 |         const particles: Particle[] = [];
+  123 |         for (let i = 0; i < PARTICLE_COUNT; i++) {
+
+  react-hooks/unsupported-syntax
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\backgrounds\GridBackground.tsx
+  32:9  warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\backgrounds\GridBackground.tsx:32:9
+  30 |         const COUNT = Math.floor((width * height) / 15000);
+  31 |
+> 32 |         class Particle {
+     |         ^^^^^^^^^^^^^^^^
+> 33 |             x: number; y: number; tx: number; ty: number;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |             color: string; size: number; wait: number;
+     ÔÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |             }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |         }
+     | ^^^^^^^^^^ Inline `class` declarations are not supported
+  92 |
+  93 |         const particles = Array.from({ length: COUNT }, () => new Particle());
+  94 |
+
+  react-hooks/unsupported-syntax
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\backgrounds\HorizonBackground.tsx
+  38:19  error  'fov' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  71:23  error  'yOffset' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  78:23  error  'x' is assigned a value but never used        @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\backgrounds\NeuralBackground.tsx
+  32:9  warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\backgrounds\NeuralBackground.tsx:32:9
+  30 |         const DIST = 200;
+  31 |
+> 32 |         class Node {
+     |         ^^^^^^^^^^^^
+> 33 |             x: number; y: number; vx: number; vy: number;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |             constructor() {
+     ÔÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 44 |             }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 45 |         }
+     | ^^^^^^^^^^ Inline `class` declarations are not supported
+  46 |
+  47 |         const nodes = Array.from({ length: COUNT }, () => new Node());
+  48 |
+
+  react-hooks/unsupported-syntax
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\components\ui\backgrounds\NuclearBackground.tsx
+  1:10  error  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+  1:21  error  'useRef' is defined but never used     @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\pages\Home.tsx
+  17:10  error  'SeoSchema' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\pages\blog\BlogIndex.tsx
+  8:8  error  'sessionImage' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\pages\blog\DigitalizationImportancePost.tsx
+  1:10  error  'Helmet' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Usuario\.gemini\antigravity\scratch\monorepo-activa-sl\apps\landing-web\src\test\setup.tsx
+   8:39  error  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+   9:40  error  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+  10:37  error  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+  11:43  error  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+  12:17  error  'children' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+  12:39  error  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+  14:37  error  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+
+Ô£û 30 problems (27 errors, 3 warnings)
+
+ÔÇëELIFECYCLEÔÇë Command failed with exit code 1.

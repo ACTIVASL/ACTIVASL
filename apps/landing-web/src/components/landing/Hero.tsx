@@ -1,6 +1,7 @@
 import { Rocket, Shield } from 'lucide-react';
 import { RevealSection } from '../ui/RevealSection';
-import heroPremiumBg from '../../assets/images/hero-sme-trust.png';
+
+
 
 export const Hero = () => {
   return (
@@ -12,9 +13,9 @@ export const Hero = () => {
         {/* Layer 1: The Image with 'Ken Burns' Motion */}
         <div className="absolute inset-0 animate-cinematic">
           <img
-            src={heroPremiumBg}
-            alt="Corporate Digital Infrastructure"
-            className="w-full h-full object-cover opacity-60"
+            src="/spatial-os-concept.png"
+            alt="Activa Spatial OS Interface"
+            className="w-full h-full object-cover opacity-80"
           />
         </div>
 
@@ -41,14 +42,15 @@ export const Hero = () => {
 
           {/* MASSIVE HEADLINE */}
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter text-white leading-[0.9] mb-8 drop-shadow-2xl uppercase">
-            ACTIVA TU <br />
+            TU EMPRESA <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-white to-brand-secondary animate-pulse-slow">
-              NEGOCIO.
+              EN TUS MANOS.
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl lg:text-2xl text-slate-400 font-body font-light max-w-3xl mx-auto mb-16 leading-relaxed text-balance uppercase tracking-wide">
-            Digitaliza tu Empresa para una mejor <span className="text-slate-200 font-medium">Gestión</span> y <span className="text-slate-200 font-medium">Ventas</span>.
+          <p className="text-lg sm:text-xl lg:text-2xl text-slate-300 font-body font-light max-w-3xl mx-auto mb-16 leading-relaxed text-balance uppercase tracking-wide">
+            Transformamos tu gestión en un <span className="text-white font-bold">Sistema Operativo Espacial</span>. <br />
+            <span className="text-brand-primary font-bold">Sin Pantallas. Sin Límites. Control Total.</span>
           </p>
 
           {/* MAGNETIC ACTION BUTTONS */}

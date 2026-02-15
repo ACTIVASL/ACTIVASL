@@ -1,6 +1,6 @@
 import { RevealSection } from '../ui/RevealSection';
 import teamImage from '../../assets/images/team-nano-v2.jpg';
-import { CheckCircle2, Award, Globe } from 'lucide-react';
+import { } from 'lucide-react';
 
 export const About = () => {
     return (

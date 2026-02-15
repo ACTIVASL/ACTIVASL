@@ -6,7 +6,7 @@
     "activa-sl-digital": {
       "hosting": {
         "crm-client": [
-          "app-activamusicoterapia"
+          "activa-sl-digital"
         ]
       }
     }

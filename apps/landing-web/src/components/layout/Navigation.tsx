@@ -9,7 +9,8 @@ import {
   MonitorPlay,
   GraduationCap,
 } from 'lucide-react';
-import logoImg from '../../assets/images/logo-header-final-v3.png';
+
+const logoImg = '/logo-v2.png';
 
 const CRM_URL = 'https://activa-sl-digital.web.app';
 

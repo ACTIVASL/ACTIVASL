@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React from 'react';
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 
 export const SpotlightCard = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {

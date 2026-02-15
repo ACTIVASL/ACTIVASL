@@ -1,12 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
-import { Toast } from '@monorepo/ui-system';
-
-interface ToastMessage {
-  id: string;
-  message: string;
-  type: 'success' | 'error';
-}
+import React, { createContext, useContext, ReactNode } from 'react';
+import { Toaster, toast } from '@monorepo/ui-system';
 
 interface ToastContextType {
   addToast: (message: string, type?: 'success' | 'error') => void;
@@ -17,46 +11,41 @@ interface ToastContextType {
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
-  const removeToast = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  }, []);
+  const addToast = (message: string, type: 'success' | 'error' = 'success') => {
+    if (type === 'error') {
+      toast.error(message);
+    } else {
+      toast.success(message);
+    }
+  };
 
-  const addToast = useCallback(
-    (message: string, type: 'success' | 'error' = 'success') => {
-      const id = Date.now().toString() + Math.random().toString();
-      setToasts((prev) => [...prev, { id, message, type }]);
-
-      // Auto-dismiss after 5 seconds
-      setTimeout(() => {
-        removeToast(id);
-      }, 5000);
-    },
-    [removeToast],
-  );
-
-  const success = useCallback((message: string) => addToast(message, 'success'), [addToast]);
-  const error = useCallback((message: string) => addToast(message, 'error'), [addToast]);
+  const success = (message: string) => toast.success(message);
+  const error = (message: string) => toast.error(message);
 
   return (
     <ToastContext.Provider value={{ addToast, success, error }}>
       {children}
-      <div className="fixed top-4 right-4 z-[9999] flex flex-col gap-2">
-        {toasts.map((toast) => (
-          <Toast
-            key={toast.id}
-            message={toast.message}
-            type={toast.type}
-            onClose={() => removeToast(toast.id)}
-          />
-        ))}
-      </div>
+      <Toaster
+        position="top-center"
+        richColors
+        theme="light"
+        closeButton
+        className="toaster-theme"
+        toastOptions={{
+          style: {
+            borderRadius: '16px',
+            border: '1px solid rgba(0,0,0,0.05)',
+            boxShadow: '0 10px 30px -10px rgba(0,0,0,0.1)',
+            fontSize: '14px',
+            fontWeight: 600,
+          }
+        }}
+      />
     </ToastContext.Provider>
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useToast = () => {
   const context = useContext(ToastContext);
   if (context === undefined) {

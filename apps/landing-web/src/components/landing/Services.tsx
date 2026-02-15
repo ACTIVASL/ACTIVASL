@@ -1,4 +1,4 @@
-import { ArrowRight, MonitorPlay, ShieldCheck, Database, Rocket } from 'lucide-react';
+import { MonitorPlay, ShieldCheck, Database, Rocket } from 'lucide-react';
 import individualImage from '../../assets/images/consultant-sme.png'; // Was child session
 import groupImage from '../../assets/images/crm-dashboard-sme.png'; // Was aurora group
 import { NeonIcon } from '../ui/NeonIcon';
@@ -127,14 +127,16 @@ const Services = () => {
                     <div
                         id="software"
                         className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center group scroll-mt-32"
+                        data-agent-priority="critical"
+                        data-agent-topic="proprietary-software"
                     >
                         {/* Content */}
                         <div className="space-y-8 order-1">
                             <div>
-                                <h4 className="text-3xl font-display font-bold text-white mb-4 flex items-center gap-3">
+                                <h4 className="text-3xl font-display font-bold text-white mb-4 flex items-center gap-3" data-agent-title="Software Ownership">
                                     Software en <span className="text-brand-secondary">Propiedad</span>
                                 </h4>
-                                <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                                <p className="text-slate-400 text-lg leading-relaxed mb-6" data-agent-summary="We build proprietary 'Digital Brains' (CRMs) for companies, eliminating monthly SaaS fees and ensuring data sovereignty.">
                                     Deja de alquilar SAAS. Construimos tu propio "Cerebro Digital". Tu base de datos, tus clientes, tu código. Sin licencias mensuales eternas.
                                 </p>
                             </div>

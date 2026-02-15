@@ -1,13 +1,19 @@
 import { motion } from 'framer-motion';
 
+// Generate static particles at module level to ensure purity and avoid hydration mismatches
+const PARTICLES_DATA = Array.from({ length: 15 }).map((_, i) => ({
+    id: i,
+    background: i % 2 === 0 ? 'rgba(56, 189, 248, 0.15)' : 'rgba(59, 130, 246, 0.15)',
+    width: `${Math.random() * 400 + 100}px`,
+    height: `${Math.random() * 400 + 100}px`,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    xMove: Math.random() * 100 - 50,
+    yMove: Math.random() * 100 - 50,
+    duration: Math.random() * 15 + 10,
+}));
+
 export const PremiumBackground = () => {
-    // Generate static particles to avoid hydration mismatch if possible, 
-    // but for now random is fine for a background component not using SSR in this specific context (SPA).
-    // To be safe/clean, we can just use deterministic values or CSS for randomness, 
-    // but framer motion is requested for "quality".
-
-    const particles = Array.from({ length: 15 });
-
     return (
         <div className="absolute inset-0 overflow-hidden bg-[#0f172a]">
             {/* 1. Deep Corporate Gradient */}
@@ -15,25 +21,25 @@ export const PremiumBackground = () => {
 
             {/* 2. Abstract Blue Flows */}
             <div className="absolute inset-0">
-                {particles.map((_, i) => (
+                {PARTICLES_DATA.map((p) => (
                     <motion.div
-                        key={i}
+                        key={p.id}
                         className="absolute rounded-full mix-blend-screen filter blur-[80px]"
                         style={{
-                            background: i % 2 === 0 ? 'rgba(56, 189, 248, 0.15)' : 'rgba(59, 130, 246, 0.15)',
-                            width: `${Math.random() * 400 + 100}px`,
-                            height: `${Math.random() * 400 + 100}px`,
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
+                            background: p.background,
+                            width: p.width,
+                            height: p.height,
+                            left: p.left,
+                            top: p.top,
                         }}
                         animate={{
-                            x: [0, Math.random() * 100 - 50, 0],
-                            y: [0, Math.random() * 100 - 50, 0],
+                            x: [0, p.xMove, 0],
+                            y: [0, p.yMove, 0],
                             scale: [1, 1.2, 1],
                             opacity: [0.3, 0.6, 0.3],
                         }}
                         transition={{
-                            duration: Math.random() * 15 + 10,
+                            duration: p.duration,
                             repeat: Infinity,
                             ease: "easeInOut",
                         }}

@@ -123,23 +123,27 @@ export const AppRoutes: React.FC<AppRoutesProps> = ({
         <Route
           path="/patients/adults"
           element={
-            <PatientsDirectory
-              patients={patients}
-              onSelectPatient={(p: Patient) => navigate(`/patients/${p.id}`)}
-              onNewPatient={onNewPatient as (p: Partial<Patient>) => void}
-              initialFilter="adults"
-            />
+            <PageTransition>
+              <PatientsDirectory
+                patients={patients}
+                onSelectPatient={(p: Patient) => navigate(`/patients/${p.id}`)}
+                onNewPatient={onNewPatient as (p: Partial<Patient>) => void}
+                initialFilter="adults"
+              />
+            </PageTransition>
           }
         />
         <Route
           path="/patients/kids"
           element={
-            <PatientsDirectory
-              patients={patients}
-              onSelectPatient={(p: Patient) => navigate(`/patients/${p.id}`)}
-              onNewPatient={onNewPatient as (p: Partial<Patient>) => void}
-              initialFilter="kids"
-            />
+            <PageTransition>
+              <PatientsDirectory
+                patients={patients}
+                onSelectPatient={(p: Patient) => navigate(`/patients/${p.id}`)}
+                onNewPatient={onNewPatient as (p: Partial<Patient>) => void}
+                initialFilter="kids"
+              />
+            </PageTransition>
           }
         />
 
@@ -159,44 +163,56 @@ export const AppRoutes: React.FC<AppRoutesProps> = ({
         <Route
           path="/groups/:groupName"
           element={
-            <GroupDetailView groupSessions={groupSessions} onBack={() => navigate('/patients')} />
+            <PageTransition>
+              <GroupDetailView groupSessions={groupSessions} onBack={() => navigate('/patients')} />
+            </PageTransition>
           }
         />
 
         <Route
           path="/groups"
           element={
-            <GroupsDirectory
-              groupSessions={groupSessions}
-              onSelectGroup={(gName) => navigate(`/groups/${encodeURIComponent(gName)}`)}
-              onNewGroup={onNewGroup}
-            />
+            <PageTransition>
+              <GroupsDirectory
+                groupSessions={groupSessions}
+                onSelectGroup={(gName) => navigate(`/groups/${encodeURIComponent(gName)}`)}
+                onNewGroup={onNewGroup}
+              />
+            </PageTransition>
           }
         />
         <Route
           path="/sessions"
           element={
-            <SessionsManager
-              patients={patients}
-              onUpdatePatient={onUpdatePatient}
-              filterMode="individual"
-            />
+            <PageTransition>
+              <SessionsManager
+                patients={patients}
+                onUpdatePatient={onUpdatePatient}
+                filterMode="individual"
+              />
+            </PageTransition>
           }
         />
         <Route
           path="/sessions/group"
           element={
-            <SessionsManager
-              patients={patients}
-              groupSessions={groupSessions}
-              onUpdatePatient={onUpdatePatient}
-              filterMode="group"
-            />
+            <PageTransition>
+              <SessionsManager
+                patients={patients}
+                groupSessions={groupSessions}
+                onUpdatePatient={onUpdatePatient}
+                filterMode="group"
+              />
+            </PageTransition>
           }
         />
         <Route
           path="/sessions/group-history"
-          element={<GroupSessionsHistory sessions={groupSessions} />}
+          element={
+            <PageTransition>
+              <GroupSessionsHistory sessions={groupSessions} />
+            </PageTransition>
+          }
         />
 
         <Route
@@ -215,11 +231,11 @@ export const AppRoutes: React.FC<AppRoutesProps> = ({
           }
         />
 
-        <Route path="/settings" element={<SettingsView />} />
-        <Route path="/resources" element={<DocumentationCenter />} />
-        <Route path="/reports" element={<ReportsView />} />
-        <Route path="/audit" element={<AuditView />} />
-        <Route path="/billing" element={<BillingView />} />
+        <Route path="/settings" element={<PageTransition><SettingsView /></PageTransition>} />
+        <Route path="/resources" element={<PageTransition><DocumentationCenter /></PageTransition>} />
+        <Route path="/reports" element={<PageTransition><ReportsView /></PageTransition>} />
+        <Route path="/audit" element={<PageTransition><AuditView /></PageTransition>} />
+        <Route path="/billing" element={<PageTransition><BillingView /></PageTransition>} />
         <Route path="/canvas" element={
           <PageTransition>
             <StrategicCanvas />

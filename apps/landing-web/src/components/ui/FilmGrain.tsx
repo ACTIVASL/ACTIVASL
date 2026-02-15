@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { } from 'react';
 
 export const FilmGrain = () => {
-    const [opacity, setOpacity] = useState(0.03);
+    const opacity = 0.03;
 
     return (
         <div

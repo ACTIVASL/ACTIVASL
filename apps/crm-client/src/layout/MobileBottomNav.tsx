@@ -9,6 +9,7 @@ interface MobileBottomNavProps {
   onOpenMenu: () => void;
   onNewAction: () => void; // Central "FAB" action
   isMenuOpen: boolean;
+  isFocused?: boolean;
 }
 
 // --- SUB COMPONENTS ---
@@ -18,7 +19,7 @@ const FABButton = memo(({ onClick }: { onClick: () => void }) => (
     <div className="absolute inset-0 bg-pink-500 blur-2xl opacity-50 group-hover:opacity-75 transition-opacity rounded-full" />
     <button
       onClick={onClick}
-      className="relative bg-gradient-to-tr from-pink-500 via-rose-500 to-pink-600 text-white rounded-full p-5 shadow-2xl shadow-pink-900/50 border-[6px] border-slate-100/10 ring-2 ring-pink-400/50 active:scale-95 active:rotate-90 transition-all duration-300"
+      className="relative bg-slate-900/90 backdrop-blur-xl border border-indigo-500/30 text-white rounded-full p-5 shadow-[0_0_30px_rgba(99,102,241,0.3)] ring-1 ring-white/10 active:scale-95 active:rotate-90 transition-all duration-300 group"
     >
       <PlusCircle size={36} strokeWidth={2} className="drop-shadow-lg" />
     </button>
@@ -89,10 +90,10 @@ NavButton.displayName = 'NavButton';
 // --- MAIN COMPONENT ---
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = memo(
-  ({ currentView, onNavigate, onOpenMenu, onNewAction, isMenuOpen }) => {
+  ({ currentView, onNavigate, onOpenMenu, onNewAction, isMenuOpen, isFocused = false }) => {
     const haptics = useHaptic();
     const scrollDirection = useScrollDirection('main-content');
-    const isHidden = scrollDirection === 'down' || isMenuOpen;
+    const isHidden = scrollDirection === 'down' || isMenuOpen || isFocused;
 
     const navItems = [
       { id: 'dashboard', icon: Activity, label: 'Inicio' },

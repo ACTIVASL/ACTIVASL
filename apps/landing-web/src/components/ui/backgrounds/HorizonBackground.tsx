@@ -35,7 +35,6 @@ export const HorizonBackground = () => {
 
             // Horizon Line
             const horizon = height * 0.4;
-            const fov = 300;
 
             offset = (offset + SPEED) % GRID_SIZE;
 
@@ -68,14 +67,13 @@ export const HorizonBackground = () => {
                 if (y > height) break;
 
                 // Moving part
-                const yOffset = (offset + y) % 20; // glitchy
 
                 ctx.moveTo(0, y);
                 ctx.lineTo(width, y);
             }
             // Radiating lines
             for (let i = -width; i < width * 2; i += 100) {
-                const x = i + (width / 2 - i) * 0.2; // Perspective
+                // Perspective
                 ctx.moveTo(centerX, horizon);
                 ctx.lineTo(i, height);
             }

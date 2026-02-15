@@ -16,10 +16,10 @@ export default {
       },
       colors: {
         brand: {
-          dark: '#020617', // Slate-950 (Corporate Deep Dark)
-          primary: '#3b82f6', // Blue-500 (Corporate Neon Blue)
-          secondary: '#94a3b8', // Slate-400 (Tech Gray)
-          accent: '#f8fafc', // Slate-50 (White Text)
+          dark: '#020617', // Slate-950 (Deep Space)
+          primary: '#6366f1', // Indigo-500 (Executive Trust)
+          secondary: '#94a3b8', // Slate-400 (Titanium Gray)
+          accent: '#22d3ee', // Cyan-400 (Energy Data)
         }
       },
       animation: {
@@ -46,6 +46,7 @@ export default {
       boxShadow: {
         'glow': '0 0 20px -5px rgba(236, 72, 153, 0.4)',
         'glow-lg': '0 0 40px -10px rgba(236, 72, 153, 0.5)',
+        'titanium-glow': '0 0 20px rgba(34, 211, 238, 0.2)', // Cyan glow
         '3d': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
     },

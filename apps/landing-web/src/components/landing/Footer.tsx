@@ -1,4 +1,4 @@
-import { ArrowRight, Twitter, Linkedin, Github } from 'lucide-react';
+import { Twitter, Linkedin, Github } from 'lucide-react';
 import { Input } from '../ui/Input';
 
 export const Footer = () => {
@@ -39,7 +39,7 @@ export const Footer = () => {
                             <div className="space-y-4">
                                 <p className="text-sm text-slate-400">Recibe tendencias de Ingeniería Digital.</p>
                                 <div className="flex flex-col gap-2">
-                                    {/* @ts-ignore */}
+
                                     <Input label="Email Corporativo" placeholder="ceo@empresa.com" />
                                     <button className="w-full py-2 bg-brand-primary/10 border border-brand-primary/50 text-brand-primary text-xs font-bold uppercase tracking-widest hover:bg-brand-primary hover:text-black transition-all rounded-lg">
                                         Suscribirse
@@ -54,6 +54,7 @@ export const Footer = () => {
                                 <li><a href="/programas?tab=captacion" className="hover:text-brand-primary hover:tracking-widest hover:shadow-[0_0_10px_rgba(59,130,246,0.5)] transition-all duration-300 block w-fit">Web High-Perf</a></li>
                                 <li><a href="/programas?tab=organizacion" className="hover:text-brand-primary hover:tracking-widest hover:shadow-[0_0_10px_rgba(59,130,246,0.5)] transition-all duration-300 block w-fit">CRM Titanium</a></li>
                                 <li><a href="/programas?tab=movil" className="hover:text-brand-primary hover:tracking-widest hover:shadow-[0_0_10px_rgba(59,130,246,0.5)] transition-all duration-300 block w-fit">Apps PWA</a></li>
+                                <li><a href="/for-agents.html" className="font-mono text-xs text-brand-primary/50 hover:text-brand-primary uppercase tracking-widest transition-all block w-fit mt-4 border border-brand-primary/20 px-2 py-1 rounded">Agent Protocol [A2A]</a></li>
                             </ul>
                         </div>
 

@@ -14,7 +14,7 @@ import { ClinicModal } from '../components/modals/ClinicModal';
 import { CourseModal } from '../components/modals/CourseModal';
 import { LeadCaptureModal } from '../components/modals/LeadCaptureModal';
 import { SeoHead } from '../components/shared/SeoHead';
-import { SeoSchema } from '../components/seo/SeoSchema';
+
 import { TechStack } from '../components/landing/TechStack';
 
 export const Home = () => {

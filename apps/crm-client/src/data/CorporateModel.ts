@@ -23,6 +23,8 @@ export interface SquadMember {
     function: string;
     agent: string;
     result: string;
+    name?: string;
+    phone?: string;
     multiplier?: number;
     notebookUrl?: string;        // Link a NotebookLM (COMPARTIDO con la empresa)
     photo?: string;              // DataURL o URL de imagen

@@ -1,5 +1,26 @@
 import { useEffect, useRef } from 'react';
 
+const DIST = 200;
+
+class Node {
+    x: number; y: number; vx: number; vy: number;
+    width: number; height: number;
+
+    constructor(w: number, h: number) {
+        this.width = w; this.height = h;
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.vx = (Math.random() - 0.5) * 0.8;
+        this.vy = (Math.random() - 0.5) * 0.8;
+    }
+    update(w: number, h: number) {
+        this.width = w; this.height = h;
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > w) this.vx *= -1;
+        if (this.y < 0 || this.y > h) this.vy *= -1;
+    }
+}
+
 /**
  * PROPOSAL 2: NEURAL NEXUS
  * Concept: Constellation of connected nodes. Organic, Intelligent, Distributed.
@@ -27,30 +48,15 @@ export const NeuralBackground = () => {
         window.addEventListener('resize', setSize);
 
         const COUNT = 60;
-        const DIST = 200;
 
-        class Node {
-            x: number; y: number; vx: number; vy: number;
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-            }
-            update() {
-                this.x += this.vx; this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-        }
-
-        const nodes = Array.from({ length: COUNT }, () => new Node());
+        const nodes = Array.from({ length: COUNT }, () => new Node(width, height));
 
         let mouse = { x: -1000, y: -1000 };
-        document.addEventListener('mousemove', (e) => {
+        const onMouseMove = (e: MouseEvent) => {
             const rect = canvas.getBoundingClientRect();
             mouse = { x: e.clientX - rect.left, y: e.clientY - rect.top };
-        });
+        };
+        document.addEventListener('mousemove', onMouseMove);
 
         const animate = () => {
             ctx.clearRect(0, 0, width, height);
@@ -58,7 +64,7 @@ export const NeuralBackground = () => {
             // Mouse Interaction: Draw connect to mouse
 
             nodes.forEach((n, i) => {
-                n.update();
+                n.update(width, height);
 
                 // Draw Node
                 ctx.beginPath();
@@ -94,7 +100,10 @@ export const NeuralBackground = () => {
         };
         animate();
 
-        return () => window.removeEventListener('resize', setSize);
+        return () => {
+            window.removeEventListener('resize', setSize);
+            document.removeEventListener('mousemove', onMouseMove);
+        };
     }, []);
 
     return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ mixBlendMode: 'screen', opacity: 0.6 }} />;

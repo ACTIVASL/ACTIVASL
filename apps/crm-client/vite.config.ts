@@ -17,14 +17,14 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
         id: '/',
-        name: 'Activa Musicoterapia Clínica',
-        short_name: 'ActivaCRM',
-        description: 'Sistema Operativo Clínico Soberano',
-        theme_color: '#EC008C',
-        background_color: '#ffffff',
+        name: 'ACTIVA OS | Enterprise Intelligence',
+        short_name: 'ACTIVA OS',
+        description: 'Sistema Operativo Empresarial Basado en Evidencia',
+        theme_color: '#050505',
+        background_color: '#050505',
         display: 'standalone',
         orientation: 'portrait',
-        categories: ['medical', 'productivity', 'health'],
+        categories: ['business', 'productivity', 'enterprise'],
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -45,26 +45,34 @@ export default defineConfig({
             sizes: '1170x2532',
             type: 'image/jpg',
             form_factor: 'narrow',
-            label: 'Dashboard Clínico Móvil',
+            label: 'Dashboard Estratégico Móvil',
           },
           {
             src: 'screenshot-clinic-4.jpg',
             sizes: '2880x1800',
             type: 'image/jpg',
             form_factor: 'wide',
-            label: 'Gestión de Pacientes Escritorio',
-          },
-        ],
-        shortcuts: [
-          {
-            name: 'Nuevo Paciente',
-            short_name: 'Paciente',
-            description: 'Registrar una nueva ficha clínica',
-            url: '/patients',
-            icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }],
+            label: 'Centro de Mando Escritorio',
           },
         ],
       },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        runtimeCaching: [{
+          urlPattern: /^https:\/\/firestore\.googleapis\.com\/.*/i,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'activa-api-cache',
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 60 * 60 * 24 // 24 hours
+            },
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }]
+      }
     }),
   ],
   resolve: {

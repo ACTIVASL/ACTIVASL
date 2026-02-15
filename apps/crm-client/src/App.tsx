@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 // LAYOUT & THEME
-
 import { AppLayout } from '@/layout/AppLayout';
 import { ErrorBoundary, CommandMenu, OfflineIndicator } from '@monorepo/ui-system';
 
@@ -13,23 +12,17 @@ import { useAuth } from './context/AuthContext';
 // ROUTES
 import { AppRouter } from './routes/AppRouter';
 
-// MOCK DATA FOR DEMO
-
-
 // MODALS
 import { GlobalModals } from './features/modals/GlobalModals';
 
-
 // REPOSITORIES
-import { SessionRepository } from './data/repositories/SessionRepository';
+// (None currently at top level)
 
 // STORES
 import { useUIStore } from './stores/useUIStore';
 
 // API & TYPES
 import { Patient, GroupSession, NavigationPayload, Session } from './lib/types';
-
-// Main App Component
 import { usePatients, useCreatePatient, useUpdatePatient } from './api/queries';
 import { queryKeys } from './api/queryKeys';
 import { useQueryClient } from '@tanstack/react-query';
@@ -66,6 +59,7 @@ const DEFAULT_SOCIAL_CONTEXT = {
 
 function App() {
   const { user, logout, loading } = useAuth();
+
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -394,6 +388,7 @@ function App() {
 
         // BETTER: Use the Repository directly for the WRITE, and manual UI update or invalidate.
         try {
+          const { SessionRepository } = await import('./data/repositories/SessionRepository');
           await SessionRepository.create(String(patient.id), newSessionBase);
 
           // 2. Mock Optimistic Update for Legacy Array support in UI
@@ -414,18 +409,13 @@ function App() {
     quickAppointment.close();
   };
 
-  // RESTORED LOADING STATE (Fixes "Login Loop / Flicker")
+  // SILENT LOADING (No Animation, just preventing Login Flash)
+  // If loading is true, we show black screen to wait for user resolution
   if (loading) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center bg-slate-900">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-brand-primary border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-400 text-sm font-medium animate-pulse">Cargando Activa OS...</p>
-        </div>
-      </div>
-    );
+    return <div className="h-screen w-screen bg-[#020617]" />;
   }
 
+  // If user is resolved as null, show login
   if (!user) {
     return (
       <div className="relative">
@@ -436,7 +426,7 @@ function App() {
 
   return (
     <ErrorBoundary>
-      {currentView === 'dashboard' ? (
+      {currentView === 'dashboard' || currentView === 'canvas' ? (
         <AppRouter
           patients={patients}
           groupSessions={groupSessions}

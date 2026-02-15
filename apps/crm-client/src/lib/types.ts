@@ -72,6 +72,17 @@ export interface AgentNodeProfile {
   };
 }
 
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  experience: number;
+  image: string;
+  bio: string;
+  status: 'ONLINE' | 'OFFLINE' | 'DEEP_WORK' | 'IDLE';
+  department: string;
+}
+
 // --- LEGACY CLINICAL TYPES (Restored for Build Compatibility) ---
 export interface EvaluationRecord {
   id: string;

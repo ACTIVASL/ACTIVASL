@@ -61,32 +61,29 @@ const CalendarDay = memo(({ day, isSelected, isToday, events, onSelect }: Calend
       onClick={handleClick}
       className={`
            relative group flex flex-col p-3 rounded-2xl transition-all duration-300 cursor-pointer
-           ${
-             isSelected
-               ? 'bg-gradient-to-tr from-indigo-500 to-purple-600 text-white shadow-xl shadow-indigo-500/20 scale-[1.05] z-10'
-               : 'bg-white hover:bg-indigo-50/50 border border-slate-100 hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-100/50'
-           }
+           ${isSelected
+          ? 'bg-gradient-to-tr from-indigo-500 to-purple-600 text-white shadow-xl shadow-indigo-500/20 scale-[1.05] z-10'
+          : 'bg-white hover:bg-indigo-50/50 border border-slate-100 hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-100/50'
+        }
            min-h-[90px] lg:min-h-[110px]
          `}
     >
       {/* Day Number */}
       <div className="flex justify-between items-start mb-2">
         <span
-          className={`text-sm font-bold w-8 h-8 flex items-center justify-center rounded-full transition-all ${
-            isSelected
+          className={`text-sm font-bold w-8 h-8 flex items-center justify-center rounded-full transition-all ${isSelected
               ? 'bg-white/20 text-white'
               : isToday
                 ? 'bg-pink-50 text-pink-600 shadow-sm'
                 : 'text-slate-600 group-hover:text-indigo-600'
-          }`}
+            }`}
         >
           {format(day, 'd')}
         </span>
         {hasEvents && (
           <span
-            className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-              isSelected ? 'bg-white text-indigo-600' : 'bg-indigo-50 text-indigo-600'
-            }`}
+            className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? 'bg-white text-indigo-600' : 'bg-indigo-50 text-indigo-600'
+              }`}
           >
             {events.length}
           </span>
@@ -98,13 +95,12 @@ const CalendarDay = memo(({ day, isSelected, isToday, events, onSelect }: Calend
         {events.slice(0, 3).map((ev, idx) => (
           <div key={idx} className="flex items-center gap-1.5">
             <div
-              className={`w-1.5 h-1.5 rounded-full shrink-0 shadow-sm ${
-                ev.type === 'group'
+              className={`w-1.5 h-1.5 rounded-full shrink-0 shadow-sm ${ev.type === 'group'
                   ? 'bg-indigo-400'
                   : ev.status === 'absent'
                     ? 'bg-red-400'
                     : 'bg-pink-400'
-              } ${isSelected ? 'ring-1 ring-white/50' : ''}`}
+                } ${isSelected ? 'ring-1 ring-white/50' : ''}`}
             ></div>
             <span
               className={`text-[9px] font-semibold truncate ${isSelected ? 'text-indigo-50' : 'text-slate-500'}`}
@@ -142,7 +138,7 @@ const TimelineEvent = memo(({ event, onClick }: TimelineEventProps) => {
       <div className="flex justify-between items-start mb-3">
         <div className="flex items-center gap-3">
           <div
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm ${event.type === 'group' ? 'bg-indigo-50 text-indigo-600' : 'bg-pink-50 text-pink-600'}`}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm ${event.type === 'group' ? 'bg-indigo-50 text-indigo-600' : 'bg-cyan-50 text-cyan-600'}`}
           >
             <Clock size={14} /> {event.time}
           </div>

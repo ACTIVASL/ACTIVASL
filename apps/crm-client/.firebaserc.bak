@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "activa-sl-digital"
+  },
+  "targets": {
+    "activa-sl-digital": {
+      "hosting": {
+        "crm-client": [
+          "app-activamusicoterapia"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

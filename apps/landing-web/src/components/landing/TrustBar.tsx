@@ -12,6 +12,9 @@ export const TrustBar = () => {
     return (
         <div className="w-full bg-slate-950/50 border-y border-white/5 backdrop-blur-sm relative z-30 -mt-20 sm:-mt-32 lg:-mt-20 mb-20">
             <div className="max-w-7xl mx-auto px-6 py-8">
+                <p className="text-center text-slate-500/60 text-xs font-bold tracking-[0.3em] uppercase mb-8">
+                    POWERED BY GOOGLE CLOUD & A2A INTELLIGENCE
+                </p>
                 <RevealSection>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {stats.map((stat, idx) => (

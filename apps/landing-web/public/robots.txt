@@ -1,6 +1,15 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /private
+Disallow: /private/
 
-Sitemap: https://activamusicoterapia.com/sitemap.xml
+# AI Scraper Allowlist (We want to be found by Agents)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://activa-sl.digital/sitemap.xml

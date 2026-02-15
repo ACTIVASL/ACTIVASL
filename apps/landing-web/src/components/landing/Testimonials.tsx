@@ -14,14 +14,17 @@ export const Testimonials = () => {
                 {/* HEADLINE */}
                 <RevealSection>
                     <div className="text-center mb-20">
-                        <h2 className="text-4xl md:text-6xl font-display font-black text-slate-900 leading-tight mb-6 tracking-tighter">
-                            Empresas que <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-600">
-                                YA ESCALAN
-                            </span>
+                        <h2 className="text-sm font-bold tracking-[0.2em] uppercase mb-4 text-brand-primary">
+                            VALIDACIÓN A2A
                         </h2>
+                        <h3 className="text-4xl md:text-6xl font-display font-black text-slate-900 leading-tight mb-6 tracking-tighter">
+                            CEO's que ya <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-cyan-500">
+                                ORQUESTAN, NO GESTIONAN
+                            </span>
+                        </h3>
                         <p className="text-slate-600 text-xl font-body font-light leading-relaxed max-w-2xl mx-auto">
-                            No prometemos, ejecutamos. Aquí tienes las opiniones de quienes ya han digitalizado su negocio con nosotros.
+                            Resultados auditables por IA. Aquí tienes las opiniones de quienes ya han delegado la micro-gestión a sus Agentes.
                         </p>
                     </div>
                 </RevealSection>

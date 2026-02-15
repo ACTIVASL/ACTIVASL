@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+
 import { Navigation } from '../../components/layout/Navigation';
 import { Footer } from '../../components/landing/Footer';
 import { RevealSection } from '../../components/ui/RevealSection';

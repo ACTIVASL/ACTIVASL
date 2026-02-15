@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DepartmentSection } from '../../components/layouts/DepartmentSection';
 import { OnyxCard } from '../../components/ui/OnyxCard';
 import {
-    Library, Search, FileText, Bot,
+    Library, Search, FileText, Database,
     Sparkles, BookOpen, Hash, ArrowRight
 } from 'lucide-react';
 
@@ -25,7 +25,7 @@ export const LibrarySection: React.FC = () => {
                 </div>
                 <input
                     type="text"
-                    placeholder="Ask Gemini 3.0 Pro Enterprise or search Knowledge Graph..."
+                    placeholder="Search Knowledge Graph..."
                     className="w-full h-14 bg-slate-900/50 border border-slate-700 rounded-xl pl-12 pr-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 transition-all font-mono text-sm"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -38,7 +38,7 @@ export const LibrarySection: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
                 {/* 1. NOTEBOOKLM PORTAL */}
-                <OnyxCard title="NotebookLM Integration" icon={Bot} className="md:col-span-2 relative overflow-hidden">
+                <OnyxCard title="NotebookLM Integration" icon={Database} className="md:col-span-2 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-4 opacity-10">
                         <Sparkles size={120} />
                     </div>
@@ -74,7 +74,7 @@ export const LibrarySection: React.FC = () => {
                         <div className="flex-1">
                             <p className="text-xs text-slate-300">"Summary of Q4 Financials based on uploaded PDFs..."</p>
                         </div>
-                        <button className="text-[10px] uppercase font-bold text-amber-500 hover:text-amber-400">View Chat</button>
+                        {/* <button className="text-[10px] uppercase font-bold text-amber-500 hover:text-amber-400">View Chat</button> REMOVED */}
                     </div>
                 </OnyxCard>
 

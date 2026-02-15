@@ -1,7 +1,10 @@
 import { onCall, HttpsOptions } from 'firebase-functions/v2/https';
+import { onDocumentCreated } from 'firebase-functions/v2/firestore';
+import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 
 import { generate } from '@genkit-ai/ai';
-import { geminiPro } from '@genkit-ai/googleai';
+import { embed } from '@genkit-ai/ai/embedder';
+import { geminiPro, textEmbeddingGecko001 } from '@genkit-ai/googleai'; // Fallback to gecko if 004 missing
 import { initGenkit } from './genkit';
 
 import { retrieveContext } from './rag/corporateMemory';
@@ -17,74 +20,97 @@ const FUNCTION_OPTS: HttpsOptions = {
     cors: true, // Allow Client Access
 };
 
-/**
- * START MISSION: The Core Activa/SquadLeader Endpoint.
- * Receives a task, context, and agent profile.
- * Returns a structured plan of action.
- */
-export const startMission = onCall(FUNCTION_OPTS, async (request) => {
-    const { task, agent, context } = request.data;
+// ... startMission ...
 
-    if (!request.auth) {
-        throw new Error("Unauthorized: Activa Identity Required.");
+/**
+ * TRIGGER: Vector Embedding Generation
+ * Automatic Neural Lace: Listens for new/updated Daily Notes and generates an embedding.
+ */
+export const embedNote = onDocumentCreated({
+    document: "daily_notes/{noteId}",
+    region: "europe-west1",
+    // We want this to be fast/background
+}, async (event) => {
+    if (!event.data) return; // Deletion
+
+    const note = event.data.data();
+    const content = note.content;
+
+    // Avoid infinite loops if we are just updating the embedding
+    if (!content || (note.embedding && !event.data.before.data())) {
+        return;
+    }
+    // Simple check: if content hasn't changed, skip.
+    if (event.data.before.data() && event.data.before.data().content === content && note.embedding) {
+        return;
     }
 
-    console.log(`[SquadLeader] Mission Received: ${task.text} -> ${agent.role}`);
+    console.log(`[Neural Lace] Embedding note: ${event.params.noteId}`);
 
     try {
-        // 1. Retrieve Corporate Memory (RAG)
-        const knowledgeSnippets = await retrieveContext(task.text, context.title);
-        const contextString = knowledgeSnippets.map(k => `- [${k.category.toUpperCase()}] ${k.content}`).join('\n');
-
-        console.log(`[SquadLeader] Knowledge Injected: ${knowledgeSnippets.length} snippets`);
-
-        // 2. Construct the Meta-Prompt
-        const prompt = `
-      ROLE: You are ${agent.role} (${agent.agent}), a top-tier corporate AI agent at Activa SL.
-      CONTEXT: The CEO has assigned a mission in the ${context.title} sector.
-      OBJECTIVE: ${context.ceoObjective}
-      
-      CORPORATE MEMORY (Use these SOPs if relevant):
-      ${contextString}
-
-      MISSION: "${task.text}"
-      
-      INSTRUCTIONS:
-      1. Analyze the mission parameters against the Corporate Memory.
-      2. If an SOP is relevant, explicitly mention it in the 'sopUsed' field.
-      3. Generate a HIGH-PRECISION execution plan.
-      4. Assign a confidence score based on information completeness.
-      5. Output MUST be valid JSON matching the schema.
-    `;
-
-        // 3. Generate Response via Genkit (Gemini Pro)
-        const llmResponse = await generate({
-            model: geminiPro,
-            prompt: prompt,
-            output: { schema: MissionResponseSchema }, // STRONG TYPING
-            config: {
-                temperature: 0.4, // Lower temperature for structured data
-            },
+        const embedding = await embed({
+            embedder: textEmbeddingGecko001,
+            content: content,
         });
 
-        // 4. Return Structured Data
-        const structuredOutput = llmResponse.output();
+        // Update with vector
+        await event.data.ref.update({
+            embedding: FieldValue.vector(embedding)
+        });
 
-        if (!structuredOutput) {
-            throw new Error("Genkit failed to generate structured output.");
-        }
-
-        return {
-            status: 'success',
-            agent: agent.role,
-            data: structuredOutput, // Typed Object
-            timestamp: Date.now()
-        };
-
-
-
-    } catch (error) {
-        console.error("Mission Failed:", error);
-        throw new Error("Squad Leader System Failure");
+        console.log(`[Neural Lace] Success. Vector generated.`);
+    } catch (e) {
+        console.error("[Neural Lace] Embedding failed", e);
     }
 });
+
+/**
+ * CALLABLE: Semantic Search
+ * Allows the frontend to search notes by meaning.
+ */
+export const searchNotes = onCall(FUNCTION_OPTS, async (request) => {
+    const { query, limit = 5 } = request.data;
+
+    if (!request.auth) {
+        throw new Error("Unauthorized");
+    }
+
+    console.log(`[Neural Search] Query: ${query}`);
+
+    try {
+        // 1. Embed the query
+        const queryEmbedding = await embed({
+            embedder: textEmbeddingGecko001,
+            content: query,
+        });
+
+        // 2. Perform Vector Search (Firestore Native)
+        const db = getFirestore();
+        const coll = db.collection('daily_notes');
+
+        // Filter by user! Important for multi-tenant privacy.
+        // Vector search with filters requires a composite vector index.
+        const vectorQuery = coll
+            .where('userId', '==', request.auth.uid)
+            .findNearest('embedding', queryEmbedding, {
+                limit: limit,
+                distanceMeasure: 'COSINE'
+            });
+
+        const snapshot = await vectorQuery.get();
+
+        const results = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+            embedding: undefined // Don't send the vector back to client, it's heavy
+        }));
+
+        console.log(`[Neural Search] Found ${results.length} matches.`);
+        return { results };
+
+    } catch (error) {
+        console.error("Search failed:", error);
+        throw new Error("Neural Search System Failure");
+    }
+});
+
