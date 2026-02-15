@@ -19,7 +19,7 @@ If you believe you have found a security vulnerability in any **Titanium** compo
 
 ### How to Report
 
-Please send an email to **security@activamusicoterapia.com** with the details of the vulnerability.
+Please send an email to **security@activa-sl.digital** with the details of the vulnerability.
 
 ### Response
 

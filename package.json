@@ -1,7 +1,11 @@
 {
   "name": "monorepo-activa-digital",
   "version": "1.0.0",
-  "description": "Enterprise Digital Solutions Platform - Activa SL.",
+  "description": "Enterprise AI Operating System & Digital Transformation Engine",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ACTIVASL/ACTIVA-SL.git"
+  },
   "author": "ACTIVA S.L.",
   "license": "UNLICENSED",
   "private": true,

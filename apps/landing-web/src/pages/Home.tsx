@@ -74,12 +74,12 @@ export const Home = () => {
     // ... schema remains same
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Activa Musicoterapia',
-    alternateName: 'Método Activa',
+    name: 'Activa SL Digital',
+    alternateName: 'Activa OS',
     url: 'https://activa-sl-digital.web.app',
     logo: 'https://activa-sl-digital.web.app/logo-premium.png',
     description:
-      'Centro líder en Neuro-Rehabilitación y Musicoterapia. Especialistas en Alzheimer, Autismo y Daño Cerebral Adquirido.',
+      'Agencia de Inteligencia Artificial y Transformación Digital. Software Factory en el ecosistema Google.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Calle de la Innovación 12',
@@ -93,32 +93,32 @@ export const Home = () => {
       longitude: -3.7038,
     },
     telephone: '+34910000000',
-    priceRange: '$$',
-    medicalSpecialty: ['Neurology', 'Psychiatry', 'Rehabilitation', 'Geriatrics'],
+    priceRange: '$$$$',
+    // medicalSpecialty removed as it's an agency now
     availableService: [
       {
-        '@type': 'MedicalTherapy',
-        name: 'Musicoterapia Neurológica',
-        description: 'Tratamiento basado en evidencia para recuperación cognitiva y motora.',
+        '@type': 'Service',
+        name: 'Transformación Digital',
+        description: 'Modernización de infraestructuras y migración a la nube.',
       },
       {
-        '@type': 'MedicalTherapy',
-        name: 'Rehabilitación Alzheimer',
-        description: 'Estimulación cognitiva avanzada para frenar el deterioro.',
+        '@type': 'Service',
+        name: 'Desarrollo de IA',
+        description: 'Integración de Agentes Gemini y automatización de procesos.',
       },
     ],
     sameAs: [
-      'https://www.linkedin.com/company/activamusicoterapia',
-      'https://www.instagram.com/activa.musicoterapia',
-      'https://www.facebook.com/profile.php?id=100063890972828',
+      'https://www.linkedin.com/company/activa-sl',
+      'https://www.instagram.com/activa.digital',
+      'https://www.facebook.com/activa.digital',
     ],
     founder: {
       '@type': 'Person',
       name: 'Aurora Del Río',
-      jobTitle: 'Directora Clínica',
+      jobTitle: 'CEO & Founder',
       image: 'https://activa-sl-digital.web.app/assets/aurora-profile.jpg',
-      description: 'Musicoterapeuta Neurológica con más de 20 años de experiencia.',
-      alumniOf: 'Máster Europeo de Musicoterapia',
+      description: 'Arquitecta de Sistemas y Experta en Transformación Digital.',
+      alumniOf: 'Google Cloud Certified',
     },
   };
 

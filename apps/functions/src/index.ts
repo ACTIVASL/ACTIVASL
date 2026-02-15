@@ -1,14 +1,10 @@
 import { onCall, HttpsOptions } from 'firebase-functions/v2/https';
-import { onDocumentCreated } from 'firebase-functions/v2/firestore';
+import { onDocumentWritten } from 'firebase-functions/v2/firestore';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 
-import { generate } from '@genkit-ai/ai';
 import { embed } from '@genkit-ai/ai/embedder';
-import { geminiPro, textEmbeddingGecko001 } from '@genkit-ai/googleai'; // Fallback to gecko if 004 missing
+import { textEmbeddingGecko001 } from '@genkit-ai/googleai';
 import { initGenkit } from './genkit';
-
-import { retrieveContext } from './rag/corporateMemory';
-import { MissionResponseSchema } from './missionSchema';
 
 // Initialize Genkit
 initGenkit();
@@ -20,30 +16,39 @@ const FUNCTION_OPTS: HttpsOptions = {
     cors: true, // Allow Client Access
 };
 
-// ... startMission ...
-
 /**
  * TRIGGER: Vector Embedding Generation
  * Automatic Neural Lace: Listens for new/updated Daily Notes and generates an embedding.
  */
-export const embedNote = onDocumentCreated({
+export const embedNote = onDocumentWritten({
     document: "daily_notes/{noteId}",
     region: "europe-west1",
     // We want this to be fast/background
 }, async (event) => {
-    if (!event.data) return; // Deletion
+    if (!event.data) return;
 
-    const note = event.data.data();
+    const change = event.data;
+    const after = change.after;
+    const before = change.before;
+
+    // Handle Deletion
+    if (!after.exists) return;
+
+    const note = after.data();
+    if (!note) return;
+
     const content = note.content;
+    const beforeData = before.exists ? before.data() : null;
 
-    // Avoid infinite loops if we are just updating the embedding
-    if (!content || (note.embedding && !event.data.before.data())) {
-        return;
-    }
-    // Simple check: if content hasn't changed, skip.
-    if (event.data.before.data() && event.data.before.data().content === content && note.embedding) {
-        return;
-    }
+    // 1. If no content, nothing to embed.
+    if (!content) return;
+
+    // 2. Loop Prevention: If Creation (no before) and Embedding already exists, skip.
+    if (!beforeData && note.embedding) return;
+
+    // 3. Loop Prevention: If Update (before exists) and Content is same and Embedding exists, skip.
+    // This prevents infinite loop when we write the embedding back to the document.
+    if (beforeData && beforeData.content === content && note.embedding) return;
 
     console.log(`[Neural Lace] Embedding note: ${event.params.noteId}`);
 
@@ -54,7 +59,7 @@ export const embedNote = onDocumentCreated({
         });
 
         // Update with vector
-        await event.data.ref.update({
+        await after.ref.update({
             embedding: FieldValue.vector(embedding)
         });
 

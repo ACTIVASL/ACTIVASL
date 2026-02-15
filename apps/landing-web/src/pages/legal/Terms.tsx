@@ -13,19 +13,18 @@ export const Terms = () => {
         </h1>
         <div className="prose prose-lg max-w-none text-gray-600">
           <p>
-            Al utilizar los servicios de Activa Musicoterapia, usted acepta los siguientes términos.
+            Al utilizar los servicios de Activa Digital, usted acepta los siguientes términos.
           </p>
 
           <h3>1. Uso de la Plataforma</h3>
           <p>
-            Esta plataforma es una herramienta de gestión y comunicación. No sustituye el consejo
-            médico de urgencia. En caso de emergencia, llame al 112.
+            Esta plataforma es una herramienta de gestión empresarial y transformación digital.
           </p>
 
           <h3>2. Propiedad Intelectual</h3>
           <p>
-            Todo el contenido (textos, método, software) es propiedad exclusiva de Activa
-            Musicoterapia.
+            Todo el contenido (código, algoritmos, metodología) es propiedad exclusiva de Activa
+            S.L. Digital.
           </p>
 
           <h3>3. Cancelaciones</h3>

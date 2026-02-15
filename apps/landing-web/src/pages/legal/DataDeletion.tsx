@@ -28,7 +28,7 @@ export const DataDeletion = () => {
           </p>
           <ol>
             <li>
-              Envíe un correo electrónico a <strong>info@activamusicoterapia.com</strong>
+              Envíe un correo electrónico a <strong>info@activa-sl.digital</strong>
             </li>
             <li>
               Indique en el asunto: <strong>"SOLICITUD DE BAJA / ELIMINACIÓN DE DATOS"</strong>.

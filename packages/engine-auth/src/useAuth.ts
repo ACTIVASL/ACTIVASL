@@ -33,7 +33,7 @@ export function useFirebaseAuthState() {
         setError(null);
 
         // FOUNDER OVERRIDE: Always premium for admin
-        if (currentUser.email === 'info@activamusicoterapia.com') {
+        if (currentUser.email === 'admin@activa-sl.digital') {
           setIsPremium(true);
           setLoading(false);
           return;

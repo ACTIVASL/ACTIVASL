@@ -14,17 +14,17 @@ export const Privacy = () => {
         <div className="prose prose-lg max-w-none text-gray-600">
           <p>Última actualización: Enero 2026</p>
           <p>
-            En Activa Musicoterapia, nos comprometemos a proteger la privacidad y seguridad de sus
-            datos personales, especialmente los datos de salud protegidos (PHI/GDPR).
+            En Activa Digital, nos comprometemos a proteger la privacidad y seguridad de sus
+            datos empresariales y personales.
           </p>
 
           <h3>1. Responsable del Tratamiento</h3>
           <p>
-            Activa Musicoterapia S.L. (en constitución)
+            Activa S.L. Digital
             <br />
             Dirección: Madrid, España
             <br />
-            Email: legal@activamusicoterapia.com
+            Email: legal@activa-sl.digital
           </p>
 
           <h3>2. Datos que Recopilamos</h3>

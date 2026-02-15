@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Activa Musicoterapia',
-        short_name: 'Activa',
-        description: 'Plataforma de Musicoterapia Clínica y Educativa',
+        name: 'Activa Digital',
+        short_name: 'ActivaOS',
+        description: 'Titanium AI Operating System',
         theme_color: '#EC008C',
         background_color: '#ffffff',
         display: 'standalone',

@@ -100,7 +100,7 @@ export const InvoiceGenerator: React.FC<InvoiceGeneratorProps> = ({ data, settin
                   {settings.name || 'NOMBRE CLÍNICA'}
                 </h1>
                 <p className="text-slate-500 text-sm font-medium">
-                  {settings.legalText || 'Servicios de Musicoterapia Clínica'}
+                  {settings.legalText || 'Servicios de Consultoría Tecnológica'}
                 </p>
               </div>
               <div className="text-right">
@@ -165,7 +165,7 @@ export const InvoiceGenerator: React.FC<InvoiceGeneratorProps> = ({ data, settin
                     <tr key={i}>
                       <td className="py-4 px-4">
                         <p className="font-bold text-slate-700">
-                          Sesión de Musicoterapia {s.type === 'group' ? 'Grupal' : 'Individual'}
+                          Consultoría Tecnológica {s.type === 'group' ? '(Pack)' : '(Hora)'}
                         </p>
                         <p className="text-xs text-slate-400">{s.date}</p>
                       </td>

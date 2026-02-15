@@ -284,7 +284,7 @@ export const Programs = () => {
                                 <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-lg">
                                     Si facturas más de 1M€, no contrates suelto. Desplegamos tu infraestructura completa (Web + CRM + App) en 60 días.
                                 </p>
-                                <a href="mailto:info@activamusicoterapia.com" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-brand-primary transition-all shadow-lg hover:shadow-brand-primary/50">
+                                <a href="mailto:info@activa-sl.digital" className="inline-flex items-center gap-2 px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-brand-primary transition-all shadow-lg hover:shadow-brand-primary/50">
                                     <Shield className="w-4 h-4" />
                                     Hablar con Dirección
                                 </a>

@@ -9,4 +9,4 @@
 ## Contact
 
 For any legal inquiries, please contact our legal department at:
-**info@activamusicoterapia.com**
+**legal@activa-sl.digital**

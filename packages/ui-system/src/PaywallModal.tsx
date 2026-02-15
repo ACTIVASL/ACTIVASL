@@ -13,7 +13,7 @@ export const PaywallModal = ({
   isOpen,
   onClose,
   limitType = 'patient',
-  checkoutUrl = 'https://activamusicoterapia.lemonsqueezy.com/checkout/buy/311e8710-d3d8-454c-81f7-200df2a59455',
+  checkoutUrl = 'https://activa-sl-digital.lemonsqueezy.com/checkout/buy/311e8710-d3d8-454c-81f7-200df2a59455',
 }: PaywallModalProps) => {
   if (!isOpen) return null;
 
